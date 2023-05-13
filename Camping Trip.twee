@@ -12,19 +12,19 @@ Camping Trip
 }
 
 
-:: \ Set Up Shelter {"position":"750,1950","size":"100,100"}
+:: \ Set Up Shelter {"position":"900,800","size":"100,100"}
 You build your tent, and want to then decide to [[go for a hike]], [[Find Food]]
 
 (set: $builtShelter to true)
 
 
-:: Bear {"position":"500,2000","size":"100,100"}
+:: Bear {"position":"600,700","size":"100,100"}
 You notice that infront of you is a 700 lbs Brown Bear.
 What do you do?
 [[Run Away]], [[Fight Bear]], [[Try to communicate with bear]]
 
 
-:: Camp Site {"position":"725,1625","size":"100,100"}
+:: Camp Site {"position":"900,450","size":"100,100"}
 (if: $firsttime) [You pull into your camp site, not sure how long you will be here for. (set:$firsttime to false)]
 At camp you decide to: 
 
@@ -36,11 +36,7 @@ At camp you decide to:
 
 
 
-:: Cook {"position":"400,925","size":"100,100"}
-You have a nice meal with the fish that you caught, you think to yourself that you are pround that you could come this far. 
-
-
-:: DicksSportingGoods.com {"position":"700,1400","size":"100,100"}
+:: DicksSportingGoods.com {"position":"1000,300","size":"100,100"}
 Ah just like how you remembered with your dad. You get all of the esentials and some things just in case. 
 
 You aquired:
@@ -49,85 +45,83 @@ Tent, Sleeping Bag, Fishing pole, Camping stove
 [[Camp Site]]
 (set: $shelterType to 'tent')
 (set: $fishingPole to true)
+(set: $sleepingBag to true)
+(set: $campingStove to true)
 
 
-:: Ducktape {"position":"600,2700","size":"100,100"}
+
+:: Ducktape {"position":"800,1400","size":"100,100"}
 Obviously Ducktape will get me out of this sticky situation. You unfirl the tape that sounds like a thousand velcro strips peeling apart. You lunge at the bear, imobilizing him by hog tieing them up. "Looks like I got you all wrapped up". You leave and return to [[Camp Site]], that might be too much excietment for one day. 
 
 
-:: FISHING TIME {"position":"400,600","size":"100,100"}
-Using a fishing hook, a gummy worm, and some dental floss; you cast your line and it soars, making a whistling sound as it rips through the air. 
+:: Eat the Berries {"position":"1100,1050","size":"100,100"}
+Yep, that was a bad idea. The berries were posionous, you have a blurred vision, and feel weak, you start choking, without a way to clear your throat. You die with a massive headache. 
 
-[[continue]]
-
-
-:: Fight Bear {"position":"700,2200","size":"100,100"}
- [[Ducktape]], [[Use Urine]]
+[[Game Over]]
 
 
-:: Find Food {"position":"1000,1700","size":"100,100"}
+:: Eat the Mushrooms {"position":"950,1050","size":"100,100"}
+Yep, that was a bad idea. The mushrooms were posionous and you die from Loss of liver and kidney function. Searing in pain you die.
+
+[[Game Over]]
+
+
+:: Fight Bear {"position":"750,900","size":"100,100"}
+You are try to attack the bear but you don't have many options, you look into your bag and all you see can see is :
+
+{
+ (if: $duckTape) [ [[Ducktape]],] 
+[[Use Urine]], 
+(if: $fishingPole)[ [[Use Fishing Pole]] ]
+}
+
+
+:: Find Food {"position":"1025,600","size":"100,100"}
 You are getting hungry, so you decide that it might be best to get some food.
 [[Scavange for food]], [[Go Fishing]]
 (set: $foundFood to True)
 
 
-:: Fire {"position":"1100,2200","size":"100,100"}
-You decide to build a (text-colour:red)[fire]. You cook up your fish that you caught, and decide to call it for the night.
+:: Fire {"position":"1250,1050","size":"100,100"}
+You decide to build a (text-colour:red)[fire]. You cook up your fish that you caught, and decide to call it for the night. You have a nice meal with the fish that you caught, you think to yourself that you are pround that you could come this far. 
 
 (if:$builtShelter)[then sleep inside the tent you[[Wake Up]]]
 (else:)[sleep on the ground, and during the night comes a cold night, you freeze to death [[Game Over]]]
 
 
 
-:: Game Over {"position":"100,2600","size":"100,100"}
+:: Game Over {"position":"300,1300","size":"100,100"}
 You have died, I am sorry for your loss. [[Start]] again
 
 
-:: Getting tired {"position":"700,500","size":"100,100"}
-You get so bored that you decide to [[fish]]
-
-
-:: Go Fishing {"position":"1200,1900","size":"100,100"}
+:: Go Fishing {"position":"1300,600","size":"100,100"}
 (if: $flossPaperClip)[You forgot to bring a fishing pole, but that's ok. Using a paper clip, a gummy worm, and some dental floss; you cast your line and it soars, making a whistling sound as it rips through the air. You caught your first fish, and decide to make a [[Fire]]
 ]
 
-(if: $fishingPole) [You brought a fishing pole, and caught a fish, this would be nice on the [[Fire]]]
+(if: $fishingPole) [Since you brought a fishing pole, and caught a fish, this would be nice on the [[Fire]]]
+
+(if: not $flossPaperClip and not $fishingPole) [ [[Use bear hands]] ]
 
 
-:: McGyver {"position":"1950,1350","size":"100,100"}
-You tinker with your gadgets and test their functions. You have a Swiss army knife, duct tape, and a smartphone with various apps. You gain +1 intelligence.
 
-A storm is coming. How do you prepare?
-
-[[duck tape]] [[smart phone]]
-
-
-:: Meh {"position":"400,275","size":"100,100"}
-Hey IUPUI fam, it's ya boy, Nick. Coming back at ya, with another banger game. But first up on the docket, [[FISHING TIME]], [[READ A BOOK]]
-
-
-:: READ A BOOK {"position":"700,300","size":"100,100"}
-It comes with great dispare and a frothing of time and space in which the man was once bleak what what once seemed like a good idea had became a waste. The years of waste has been 
-
-[[Getting tired]]
-
-
-:: Roar as loud as possilbe {"position":"400,2700","size":"100,100"}
+:: Roar as loud as possilbe {"position":"500,1400","size":"100,100"}
 The sounds that you have made are deeply offensive to the bear, he crys and leaves you alone for now. You decide to go back to the [[Camp Site]]
 
 
-:: Run Away {"position":"500,2200","size":"100,100"}
+:: Run Away {"position":"600,900","size":"100,100"}
 (if: $stamina > 1)[You just barely make it out alive, you decide to head back to camp before you find yourslef in another hary situation [[Camp Site]]]
 (else: )[The bear was too quick, and easily catches and mauls your face. [[Game Over]]]
 
 
 
 
-:: Scavange for food {"position":"925,2000","size":"100,100"}
-You decide to forage for some food. You grab anything that looks ediable, but you forgot to bring the guide that tells you what is poisionous and what is safe. But you aren't allergic to any foods so you decide to wing it. [[Game Over]]
+:: Scavange for food {"position":"1100,900","size":"100,100"}
+You decide to forage for some food. You grab anything that looks ediable, but you forgot to bring the guide that tells you what is poisionous and what is safe. But you aren't allergic to any foods so you decide to wing it. 
+[[Eat the Berries]], [[Eat the Mushrooms]]
 
 
-:: Start {"position":"700,1200","size":"100,100"}
+
+:: Start {"position":"900,100","size":"100,100"}
 After years of programming, you are having a midlife crisis, and decicide that it is time for you to enjoy the outdoors. You search up camping equipment, and a bunch of links come up. Which one do you choose
 [[UltraLightBackpacking.com]] , [[DicksSportingGoods.com]] 
 
@@ -143,72 +137,53 @@ After years of programming, you are having a midlife crisis, and decicide that i
 (set: $duckTape to false)
 (set: $tent to true)
 
-
+<!--This is only for the Dicks Sporting Good class-->
 (set:$fishingPole to false)
+(set: $sleepingBag to false)
+(set: $campingStove to false)
 
 
-:: Try bear signlanguage {"position":"100,2400","size":"100,100"}
+:: Try bear signlanguage {"position":"300,1100","size":"100,100"}
 The bear notices that you are trying your best and feels like you are part of his pack. He gives you a fistbump as a sign of respect, which accidently slashes your neck and you die. [[Game Over]]
 
 
-:: Try to communicate with bear {"position":"300,2200","size":"100,100"}
+:: Try to communicate with bear {"position":"450,900","size":"100,100"}
+You aren't sure what to do: 
 [[Try bear signlanguage]], [[Roar as loud as possilbe]] 
 
 
-:: UltraLightBackpacking.com {"position":"600,1400","size":"100,100"}
+:: UltraLightBackpacking.com {"position":"800,300","size":"100,100"}
 You Aqquired a tarp, duck tape, a pen, floss, toothbrush, and paperclip.
 You aquired +2 stamina  
 
 Continue to [[Camp Site]] 
+(set: $shelterType to 'polyethylene tarp')
 (set: $stamina to $stamina + 2)
 (set: $flossPaperClip to true)
 (set: $duckTape to true)
-(set: $shelterType to 'tarp')
 
 
-:: Use Urine {"position":"800,2700","size":"100,100"}
+
+:: Use Fishing Pole {"position":"700,1300","size":"100,100"}
+You whack the bear, sending him into shock, he runs a way. But you broke your pole.
+Fishing Pole damaged
+(set:$fishingPole to false)
+
+You walk back sad that your fishing pole won't work [[Camp Site]]
+
+
+:: Use Urine {"position":"925,1400","size":"100,100"}
 Luckily you have been needing to go for a while now, and completly fill the cup. You splash it on the bear. The bear notices your dominance, and forfits the teritorial dispute. You decide to go back to the [[Camp Site]]
 
 
-:: Wake Up {"position":"1200,2600","size":"100,100"}
+:: Use bear hands {"position":"1400,900","size":"100,100"}
+You try to fish without using any tools. You are so hungry that you scare away all of the fish. As a last resort you try to [[Scavange for food]]
+
+
+:: Wake Up {"position":"1100,1500","size":"100,100"}
 Congradulations for Surviving the day you win! [[Start]] again
 
 
-:: continue {"position":"400,800","size":"100,100"}
-As you were starting to get bored you feel a tug, you think to your self, how could this even work, it's just a piece of dental floss and paperclip. [[Cook]]
-
-
-:: duck tape {"position":"2075,1475","size":"100,100"}
-You use your duct tape to reinforce your tent and seal any gaps or holes. You also use it to make some waterproof clothing and accessories. You gain +1 intelligence. [[storm passes]]
-
-
-:: fish {"position":"500,600","size":"100,100"}
-You realize that this is even more boring than the reading. [[continue]]
-
-
-:: go fishing {"position":"2075,1750","size":"100,100"}
-
-
-
-:: go for a hike {"position":"400,1800","size":"100,100"}
+:: go for a hike {"position":"700,550","size":"100,100"}
 You decide to go on a hike, taking in all of the senic views of nature. But along the way you run into a [[Bear]].
 (set: $wentForHike to true)
-
-
-:: go on hike {"position":"1950,1750","size":"100,100"}
-
-
-
-:: smart phone {"position":"1825,1475","size":"100,100"}
-You use your smartphone to check the weather forecast and find a safe spot to camp. You also use it as a flashlight and a radio. You gain +1 intelligence. [[storm passes]]
-
-
-:: storm passes {"position":"1950,1625","size":"100,100"}
-The storm passes without any trouble. You stay safe and connected in your tent. You gain +1 intelligence.
-
-The next day, you decide to explore the area. What do you do?
-[[go on hike]] [[go fishing]] [[view senic overpass]]
-
-
-:: view senic overpass {"position":"1825,1750","size":"100,100"}
-
